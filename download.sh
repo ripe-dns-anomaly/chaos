@@ -44,8 +44,8 @@ for l in ${root_letter}; do
   # Download JSON
   msn_src="https://atlas.ripe.net/api/v2/measurements/${msn_id_v4[$count_letter]}/results?start=${init_time}&stop=${stop_time}&format=json";
   dst_file="atlas_input/${l}-${init_time}.json";
-  rm -f ${dst_file};
-  curl -o $dst_file $msn_src;
+#  rm -f ${dst_file};
+#  curl -o $dst_file $msn_src;
 
   #
   # Parse JSON to csv; output:
@@ -73,6 +73,7 @@ for l in ${root_letter}; do
   # calculate per-letter statistics
   stats_file_time="stats_result/${l}-${init_time}.csv";
   stats_file_all="stats_result/${l}.csv";
+  _stat_number_probes=`cut -f 1 -d ' ' ${clean_file} | sort -n | uniq | wc -l | awk '{print $1;}'`;
 	_stat_number_sites=`cut -f 3 -d ' ' ${clean_file} | sort | uniq | wc -l | awk '{print $1;}'`;
 	_stat_number_replies=`wc -l ${clean_file} | awk '{print $1;}'`;
   _stat_number_queries=`python count-queries.py ${dst_file}`;
@@ -97,12 +98,24 @@ for l in ${root_letter}; do
   if [ ! -f $stats_file_all ]; then
   	echo "timestamp,nSites,nQueries,nResponses,q25RTT,q50RTT,q75RTT,q90RTT" >> $stats_file_all;
   fi;
-	echo "$init_time,$_stat_number_sites,$_stat_number_queries,$_stat_number_replies,$_stat_rtt" >> $stats_file_all;
+	echo "$init_time,$_stat_number_probes,$_stat_number_sites,$_stat_number_queries,$_stat_number_replies,$_stat_rtt" >> $stats_file_all;
 
-  rm -f ${dst_file};
 
   #
   # calculate per-site statistics
+#  gawk '
+#    {
+#      site[$3]++;
+#      site_rtt[$3][length(site[$3])] = $4;
+#    }
+#  ' ${clean_file};
+
+
+
+
+
+
+  rm -f ${dst_file};
 
 done;
 
