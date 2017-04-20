@@ -96,7 +96,7 @@ for l in ${root_letter}; do
 			}'`;
 
   if [ ! -f $stats_file_all ]; then
-  	echo "timestamp,nSites,nQueries,nResponses,q25RTT,q50RTT,q75RTT,q90RTT" >> $stats_file_all;
+  	echo "timestamp,nProbes,nSites,nQueries,nResponses,q25RTT,q50RTT,q75RTT,q90RTT" >> $stats_file_all;
   fi;
 	echo "$init_time,$_stat_number_probes,$_stat_number_sites,$_stat_number_queries,$_stat_number_replies,$_stat_rtt" >> $stats_file_all;
 
