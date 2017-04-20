@@ -1,7 +1,7 @@
 #!/bin/bash
 
-start_time="1492560000";
-stop_time="1492560600";
+start_time="1448841600";
+stop_time="1448842200";
 
 for i in {1..144}; do
 

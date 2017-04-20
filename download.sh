@@ -44,8 +44,8 @@ for l in ${root_letter}; do
   # Download JSON
   msn_src="https://atlas.ripe.net/api/v2/measurements/${msn_id_v4[$count_letter]}/results?start=${init_time}&stop=${stop_time}&format=json";
   dst_file="atlas_input/${l}-${init_time}.json";
-#  rm -f ${dst_file};
-#  curl -o $dst_file $msn_src;
+  rm -f ${dst_file};
+  curl -o $dst_file $msn_src;
 
   #
   # Parse JSON to csv; output:
