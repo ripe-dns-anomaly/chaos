@@ -1,14 +1,7 @@
 #!/bin/bash
 
-declare -a root_letter=( "k" );
-declare -a msn_id_v4=( "10301" );
-
-declare -i count_letter=-1;
-declare -i skip=1;
-
 path_atlas_json="atlas_input/";
 path_json_result="json_result/";
-
 
 if [ $# -ne 4 ]; then
   echo "ERROR! number of arguments is not correct. Usage:";
