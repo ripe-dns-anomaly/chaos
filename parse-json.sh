@@ -1,4 +1,20 @@
 #!/bin/bash
+#
+# Usage:
+#   ./parse-json.sh <START timestamp> <STOP timestamp> <interval> <measurement ID>
+#
+# Notes:
+#   - START and STOP timestamps are epoch (GMT)
+#   - interval is the bin size for analysis (in seconds)
+#   - measurement ID has to be a CHAOS measurement produced by RIPE Atlas
+#
+# YOU have to create the following folder structure:
+#   - atlas_input: to temporarily store JSON files downloaded from RIPE Atlas
+#   - json_result: to store processed csv files
+#   - stats_result: to store general letter (service) results
+#   - stats_result/sites: to store individual sites (servers) results
+#
+
 
 path_atlas_json="atlas_input/";
 path_json_result="json_result/";
